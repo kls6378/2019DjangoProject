@@ -1,0 +1,8 @@
+<h1>{{board.title}}</h1>
+<h3>{{board.name}}</h3>
+<h4>{{board.date}}</h4>
+<a href="/board/{{board.id}}/update/">오마이갓 수정;;</a>
+<a href="/board/{{board.id}}/delete/">오마이갓 삭제;;</a>
+<a href="/board">목록으로로로로로로ㅗ</a>
+{% if error_message %}<p><strong>{{error_message}}</strong></p>{% endif %}
+<div>{{board.contents}}</div>

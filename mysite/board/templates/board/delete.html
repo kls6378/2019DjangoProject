@@ -1,0 +1,7 @@
+<form method="POST">
+    {% csrf_token %}
+    <h3>{{board.title}} - 삭제</h3>
+    <input type="password" placeholder="비밀번호" name="password"><br>
+    <button>삭제</button>
+</form>
+<a href="/board/{{board.id}}">뒤로갸ㅏ기</a>
