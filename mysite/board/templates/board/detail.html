@@ -6,3 +6,13 @@
 <a href="/board">목록으로로로로로로ㅗ</a>
 {% if error_message %}<p><strong>{{error_message}}</strong></p>{% endif %}
 <div>{{board.contents}}</div>
+{% for comment in board.comment_set.all %}
+<form method="POST">
+    {% csrf_token %}
+    <input type="text" placeholder="이름" name="name"><br>
+    <input type="password" placeholder="비밀번호" name="password"><br>
+    <textarea placeholder="댓글을 입력해주세요." name="contents"></textarea><br>
+    <button>게시</button>
+</form>
+<li>{{comment.contents}} | {{comment.name}} | {{comment.date}}</li>
+{%endfor%}

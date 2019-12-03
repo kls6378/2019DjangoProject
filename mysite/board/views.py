@@ -1,7 +1,7 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.http import HttpResponseRedirect
 from django.urls import reverse
-from board.models import Board
+from board.models import Board, Comment
 
 # Create your views here.
 
@@ -11,15 +11,22 @@ def index(request):
 
 def detail(request, board_id):
     board=get_object_or_404(Board, pk=board_id)
+    if request.method == 'POST':
+        new_comment = Comment.objects.create(
+            name = request.POST['name'],
+            password = request.POST['password'],
+            contents = request.POST['contents']
+        )
+        return redirect(f'/board/{board_id}')
     return render(request, 'board/detail.html', {'board':board})
 
 def create(request):
     if request.method == 'POST':
         new_board = Board.objects.create(
-            name=request.POST['name'],
-            password=request.POST['password'],
-            title=request.POST['title'],
-            contents=request.POST['contents']
+            name = request.POST['name'],
+            password = request.POST['password'],
+            title = request.POST['title'],
+            contents = request.POST['contents']
         )
         return redirect(f'/board/{ new_board.id }')
 
@@ -47,3 +54,5 @@ def delete(request, board_id):
             return redirect('/board/')
 
     return render(request, 'board/delete.html',{'board':board})
+
+
