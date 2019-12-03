@@ -1,10 +1,21 @@
-<form method="POST">
-    {% csrf_token %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Create</title>
+</head>
+<body>
     <h3>게시물 올리기</h3>
-    <input type="text" placeholder="이름" name="name"><br>
-    <input type="password" placeholder="비밀번호" name="password"><br>
-    <input type="text" placeholder="제목을 입력해주세요." name="title"><br>
-    <textarea placeholder="내용을 입력해주세요." name="contents"></textarea><br>
-    <button>게시</button>
-</form>
-<a href="/board">뒤로갸ㅏ기</a>
+    <form method="POST">
+        {% csrf_token %}
+        <input type="text" placeholder="이름" name="name"><br>
+        <input type="password" placeholder="비밀번호" name="password"><br>
+        <input type="text" placeholder="제목을 입력해주세요." name="title"><br>
+        <textarea placeholder="내용을 입력해주세요." name="contents"></textarea><br>
+        <button>게시</button>
+    </form>
+    <a href="/board">뒤로갸ㅏ기</a>
+</body>
+</html>

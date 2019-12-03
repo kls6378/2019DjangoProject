@@ -1,11 +1,22 @@
-<h1>BOARD LIST</h1>
-<a href="create/">글작성 ㄱㄱㄱㄱ</a>
-{% if board_list %}
-<ul>
-    {% for board in board_list %}
-    <li><a href="/board/{{board.id}}/">{{board.title}}</a> | {{board.name}} | {{board.date}}</li>
-    {% endfor %}
-</ul>
-{% else %}
-<p>게시판에 아무글도 없어어ㅛㄹ놈</p>
-{% endif %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Board</title>
+</head>
+<body>
+    <h1>BOARD LIST</h1>
+    <a href="create/">글작성 ㄱㄱㄱㄱ</a>
+    {% if board_list %}
+    <ul>
+        {% for board in board_list %}
+        <li><a href="/board/{{board.id}}/">{{board.title}}</a> | {{board.name}} | {{board.date}}</li>
+        {% endfor %}
+    </ul>
+    {% else %}
+    <p>게시판에 아무글도 없어어ㅛㄹ놈</p>
+    {% endif %}
+</body>
+</html>

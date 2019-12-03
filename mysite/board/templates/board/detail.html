@@ -1,18 +1,31 @@
-<h1>{{board.title}}</h1>
-<h3>{{board.name}}</h3>
-<h4>{{board.date}}</h4>
-<a href="/board/{{board.id}}/update/">오마이갓 수정;;</a>
-<a href="/board/{{board.id}}/delete/">오마이갓 삭제;;</a>
-<a href="/board">목록으로로로로로로ㅗ</a>
-{% if error_message %}<p><strong>{{error_message}}</strong></p>{% endif %}
-<div>{{board.contents}}</div>
-{% for comment in board.comment_set.all %}
-<form method="POST">
-    {% csrf_token %}
-    <input type="text" placeholder="이름" name="name"><br>
-    <input type="password" placeholder="비밀번호" name="password"><br>
-    <textarea placeholder="댓글을 입력해주세요." name="contents"></textarea><br>
-    <button>게시</button>
-</form>
-<li>{{comment.contents}} | {{comment.name}} | {{comment.date}}</li>
-{%endfor%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>{{board.title}}</title>
+</head>
+<body>
+    <h1>{{board.title}}</h1>
+    <h3>{{board.name}}</h3>
+    <h4>{{board.date}}</h4>
+    <a href="/board/{{board.id}}/update/">오마이갓 수정;;</a>
+    <a href="/board/{{board.id}}/delete/">오마이갓 삭제;;</a>
+    <a href="/board">목록으로로로로로로ㅗ</a>
+    {% if error_message %}<p><strong>{{error_message}}</strong></p>{% endif %}
+    <div>{{board.contents}}</div>
+    <form method="POST">
+        {% csrf_token %}
+        <input type="text" placeholder="이름" name="name"><br>
+        <input type="password" placeholder="비밀번호" name="password"><br>
+        <textarea placeholder="댓글을 입력해주세요." name="contents"></textarea><br>
+        <button>게시</button>
+    </form>
+    {% for comment in board.comment_set.all %}
+    <li>{{comment.contents}} | {{comment.name}} | {{comment.date}}</li>
+    <a href="/board/{{comment.id}}/cupdate/">수정</a>
+    <a href="/board/{{comment.id}}/cdelete/">삭제</a>
+    {%endfor%}
+</body>
+</html>

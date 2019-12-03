@@ -4,15 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Delete</title>
+    <title>Update</title>
 </head>
 <body>
-    <h3>{{board.title}} - 삭제</h3>
+    <h3>게시물 수정</h3>
     <form method="POST">
         {% csrf_token %}
+        <input type="text" placeholder="이름" name="name" value="{{comment.name}}"><br>
         <input type="password" placeholder="비밀번호" name="password"><br>
-        <button>삭제</button>
+        <textarea placeholder="내용을 입력해주세요." name="contents">{{comment.contents}}</textarea><br>
+        <button>수정</button>
     </form>
-    <a href="/board/{{board.id}}">뒤로갸ㅏ기</a>
+    <a href="/board/{{comment.board.id}}">뒤로갸ㅏ기</a>
 </body>
 </html>
