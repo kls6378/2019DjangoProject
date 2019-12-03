@@ -1,18 +1,46 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Delete</title>
+<meta charset="UTF-8">
+<!-- jQuery -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+<title>댓글 삭제</title>
+<script>
+	$(document).on('click', '#btnSave', function(e){
+		e.preventDefault();
+		$("#form").submit();
+	});
+	$(document).on('click', '#btnList', function(e){
+		e.preventDefault();
+		location.href="/board/{{comment.board.id}}";
+	});
+</script>
+<style>
+body {
+  padding-top: 70px;
+  padding-bottom: 30px;
+}
+</style>
 </head>
 <body>
-    <h3>{{comment.contents}} - 삭제</h3>
-    <form method="POST">
-        {% csrf_token %}
-        <input type="password" placeholder="비밀번호" name="password"><br>
-        <button>삭제</button>
-    </form>
-    <a href="/board/{{comment.board.id}}">뒤로갸ㅏ기</a>
+	<article>
+		<div class="container" role="main">
+			<h2>댓글 삭제</h2>
+			<form name="form" id="form" role="form" method="post">
+                {% csrf_token %}
+				<div class="mb-3">
+						<label for="tag">비밀번호</label>
+						<input type="password" class="form-control" name="password" id="tag" placeholder="비밀번호를 입력해 주세요">
+					</div>		
+			</form>
+			<div >
+				<button type="button" class="btn btn-sm btn-primary" id="btnSave">삭제</button>
+				<button type="button" class="btn btn-sm btn-primary" id="btnList">뒤로가기</button>
+			</div>
+		</div>
+	</article>
 </body>
 </html>
