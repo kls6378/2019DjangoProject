@@ -1,13 +1,32 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>main</title>
+    <title>선린 게시판</title>
+    <style>
+        body{
+            background: yellow;
+        }
+        div{
+            margin-top: 140px;
+            text-align: center;
+        }
+        #btnGo{
+            font-size: 30px;
+            margin: 5%;
+            background-color: violet;
+        }
+    </style>
 </head>
 <body>
-    <h1>메인화면입니닿ㅎㅎㅎㅎㅎㅎㅎ</h1>
-    <a href="board/">게시판ㄱㄱㄱㄱ</a>
+    <div>
+            <h1>선린 게시판</h1>
+            <img src = '{%static "sunrin.PNG"%}' width="600" height="200"><br>
+            <button type="button" style="width:200px; height:100px;" class="btn btn-sm btn-primary" id="btnGo" onclick="location.href='board/'">게시판 가기</button>
+    </div>
 </body>
 </html>
+

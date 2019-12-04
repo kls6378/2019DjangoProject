@@ -33,15 +33,15 @@ body {
                 {% csrf_token %}
 				<div class="mb-3">
 						<label for="reg_id">작성자</label>
-						<input type="text" class="form-control" name="name" id="reg_id" placeholder="이름을 입력해 주세요" value="{{comment.name}}">
+						<input type="text" class="form-control" name="name" id="reg_id" placeholder="이름을 입력해 주세요" value="{{comment.name}}" minlength="2" maxlength="10">
 					</div>
 				<div class="mb-3">
 						<label for="tag">비밀번호</label>
-						<input type="password" class="form-control" name="password" id="tag" placeholder="비밀번호를 입력해 주세요">
+						<input type="password" class="form-control" name="password" id="tag" placeholder="비밀번호를 입력해 주세요" minlength="2" maxlength="20">
 					</div>		
 				<div class="mb-3">
 					<label for="content">내용</label>
-					<textarea class="form-control" rows="5" name="contents" id="content" placeholder="내용을 입력해 주세요" >{{comment.contents}}</textarea>
+					<textarea class="form-control" rows="5" name="contents" id="content" placeholder="내용을 입력해 주세요" minlength="2" maxlength="300">{{comment.contents}}</textarea>
 				</div>
 			</form>
 			<div >

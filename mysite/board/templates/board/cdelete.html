@@ -33,7 +33,7 @@ body {
                 {% csrf_token %}
 				<div class="mb-3">
 						<label for="tag">비밀번호</label>
-						<input type="password" class="form-control" name="password" id="tag" placeholder="비밀번호를 입력해 주세요">
+						<input type="password" class="form-control" name="password" id="tag" placeholder="비밀번호를 입력해 주세요" minlength="2" maxlength="20">
 					</div>		
 			</form>
 			<div >
