@@ -1,31 +1,79 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>{{board.title}}</title>
+    <style>
+        body {
+            background-color: yellow;
+        }
+    </style>
 </head>
+
 <body>
-    <h1>{{board.title}}</h1>
-    <h3>{{board.name}}</h3>
-    <h4>{{board.date}}</h4>
-    <a href="/board/{{board.id}}/update/">수정</a>
-    <a href="/board/{{board.id}}/delete/">삭제</a>
-    <a href="/board">목록으로</a>
-    {% if error_message %}<p><strong>{{error_message}}</strong></p>{% endif %}
-    <div>{{board.contents}}</div>
-    <form method="POST">
-        {% csrf_token %}
-        <input type="text" placeholder="이름" name="name" minlength="2" maxlength="10"><br>
-        <input type="password" placeholder="비밀번호" name="password" minlength="2" maxlength="20"><br>
-        <textarea placeholder="댓글을 입력해주세요." name="contents" minlength="2" maxlength="300"></textarea><br>
-        <button>게시</button>
-    </form>
-    {% for comment in board.comment_set.all %}
-    <li>{{comment.contents}} | {{comment.name}} | {{comment.date}}</li>
-    <a href="/board/{{comment.id}}/cupdate/">수정</a>
-    <a href="/board/{{comment.id}}/cdelete/">삭제</a>
-    {%endfor%}
+    <h1>게시물</h1>
+    <a href="/board/{{board.id}}/update/"><button>수정</button></a>
+    <a href="/board/{{board.id}}/delete/"><button>삭제</button></a>
+    <a href="/board"><button>목록으로</button></a>
+    <br>
+    <table class='read' border='1'>
+        <thead>
+            <tr>
+                <td>제목 </td>
+                <td width="500" height="40">{{board.title}}</td>
+            <tr>
+                <td>날짜 </td>
+                <td width="500" height="40">{{board.date}}</td>
+            <tr>
+                <td>이름 </td>
+                <td width="500" height="40">{{board.name}}</td>
+            <tr>
+                <td>내용</td>
+                <td width="500" height="200">{{board.contents}}</td>
+        </thead>
+    </table>
+
+    <h4>댓글</h4>
+    <div id="comment">
+        <form method="POST">
+            {% csrf_token %}
+            <table>
+                <tr>
+                    <td><input type="text" name="name" minlength="2" maxlength="10" placeholder="이름"></td>
+                    <td><input type="password" name="password" minlength="2" maxlength="20" placeholder="비밀번호"></td>
+                    <td><textarea cols="80" rows="6" placeholder="댓글을 입력해주세요." name="contents" minlength="2"
+                            maxlength="300"></textarea></td>
+                    <td style="padding:0 0 3px 15px; ">
+                        <input type="submit" value="댓글달기" class="c_btn" />
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </div>
+    <div id="comment_result">
+        <table width="750">
+            <tr>
+                <td width='620'>
+                    <div style='border-left:1px solid #888888;'>
+                        {% for comment in board.comment_set.all %}
+                        <div id='re_content'>
+                            <div><strong>{{comment.name}}</strong> | {{comment.date}}</div>
+                            <br>
+                            <div>{{comment.contents}}</div>
+                            <a href="/board/{{comment.id}}/cupdate/"><button>수정</button></a>
+                            <a href="/board/{{comment.id}}/cdelete/"><button>삭제</button></a>
+                        </div>
+                        {%endfor%}
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <br>
+    <hr>
 </body>
+
 </html>
